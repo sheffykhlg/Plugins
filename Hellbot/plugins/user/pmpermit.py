@@ -211,7 +211,7 @@ async def handle_incoming_pm(client: Client, message: Message):
         return
 
     max_spam = await db.get_env(ENV.pm_max_spam)
-    max_spam = int(max_spam) if max_spam else 5
+    max_spam = int(max_spam) if max_spam else 50
     warns = WARNS.get(client.me.id, {}).get(message.from_user.id, max_spam)
 
     if warns <= 0:
